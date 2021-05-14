@@ -49,15 +49,9 @@ Once the animation is finished, the element is added to the document.
 
 - A different set of classes can be added for leaving the document. 
 
-#### *-leave-from
-
 __*-leave-from__ is the class that gets added to the __first__ frame of the animation. 
 
-#### *-leave-to
-
 __*-leave-to__ is the class that gets added to the __final__ frame of the animation. 
-
-#### *-leave-active
 
 __*-leave-active__ is the class that gets added to the entire animation, including the __first__ and __final__ frames.
 
