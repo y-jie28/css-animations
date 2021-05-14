@@ -157,3 +157,13 @@ Does not happen by default. In order to have animation play on page load, a prop
 
 ## JavaScirpt Animations
 
+CSS is usually the way to go when animating elements. It is the __Simplest__ way of adding animations. You can also animate your elements with JavaScript if you need more __control__. 
+
+Vue provides 3 hooks to use for both __entering__ and __leaving__ animations. 
+
+### The __Entering__ animations are used when the element is being inserted into the DOM
+
+
+### The __Leaving__ animations are used when the element is being removed from the DOM. 
+
+
