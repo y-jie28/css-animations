@@ -59,7 +59,7 @@ Once the animation is finished, the element is removed from the document.
 
 ## Fine-tuning Transitions
 
-- Learn how to configure transitions. There are various things that can be changed to get the desired behavior. 
+### Learn how to configure transitions. There are various things that can be changed to get the desired behavior. 
 
 
 The following code didn't tell Vue how long the animation should play. Vue is capable of looking at the styles applied to the element, where the duration was set. Vue will use the duration that was set in the CSS. 
