@@ -62,3 +62,77 @@ __*-leave-to__ is the class that gets added to the __final__ frame of the animat
 __*-leave-active__ is the class that gets added to the entire animation, including the __first__ and __final__ frames.
 
 Once the animation is finished, the element is removed from the document. 
+
+## Fine-tuning Transitions
+
+- Learn how to configure transitions. There are various things that can be changed to get the desired behavior. 
+
+
+The following code didn't tell Vue how long the animation should play. Vue is capable of looking at the styles applied to the element, where the duration was set. Vue will use the duration that was set in the CSS. 
+
+```
+<template>
+<transition name="fade">
+    <h2 v-if="flag">Hello World!</h2>
+</transition>
+</template>
+
+<styles>
+.fade-enter-active {
+  transition: all 0.25s linear;
+}
+</styles>
+```
+
+It is possible to set the duration by adding the __duration__ property on the __transition__ component. The value for the duration property must be in milliseconds. 
+
+```
+<transition name="fade" duration="1000">
+  <h2 v-if="flag">Hello World!</h2>
+</transition>
+```
+
+Vue will priortize duration property over the duration that was defined in the CSS on the component.
+
+- Animation can be applied to elements using the __v-show__ directive as well. 
+
+```
+<transition name="fade" duration="1000">
+  <h2 v-show="flag">Hello World!</h2>
+</transition>
+```
+
+The above would work as well.
+
+#### v-if & v-else
+Transition animation is not limited to one root element. By using __v-else__, can apply the animation as well. 
+
+However, we do need to add a __key__ attribute as Vue will have a problem differentiating between 2 elements even though there's a conditional directive applied to them. 
+
+___By the way, make sure to keep the transition section clean. ___
+(_I spent 10 minutes debugging why the conditional directive is not working and it turns out the comments caused the problem =皿=#_)
+
+```
+  <transition name="fade">
+    <h2 v-if="flag" key="main">Hello World!</h2>
+    <!-- not limited to one root element -->
+    <h2 v-else key="secondary">Another Hello!</h2>
+  </transition>
+```
+
+The above will __NOT__ work. 
+
+#### Animate In-and-Out
+Default behavior is the second element animates in first before the first element animates out. The behavior can be reversed (first element to animate out first before second elements animates in) by using the __mode__ attribute. 
+
+The __mode__ attribute defines the order of the animation. 
+
+```
+<!-- The default of mode is "in-out" -->
+<transition mode="out-in"> 
+</transition>
+```
+
+
+
+
