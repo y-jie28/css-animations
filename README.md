@@ -88,7 +88,7 @@ It is possible to set the duration by adding the __duration__ property on the __
 
 Vue will priortize duration property over the duration that was defined in the CSS on the component.
 
-- Animation can be applied to elements using the __v-show__ directive as well. 
+### Animation can be applied to elements using the __v-show__ directive as well. 
 
 ```
 <transition name="fade" duration="1000">
@@ -103,7 +103,7 @@ Transition animation is not limited to one root element. By using __v-else__, ca
 
 However, we do need to add a __key__ attribute as Vue will have a problem differentiating between 2 elements even though there's a conditional directive applied to them. 
 
-___By the way, make sure to keep the transition section clean. ___
+__By the way, make sure to keep the transition section clean.__
 (_I spent 10 minutes debugging why the conditional directive is not working and it turns out the comments caused the problem =皿=#_)
 
 ```
