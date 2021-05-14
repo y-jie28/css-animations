@@ -14,14 +14,13 @@ npm run serve
 
 # Notes
 
+## CSS Animations
+
 There are two ways to add animations in CSS, either through __transitions__ or __animations__. 
 
 Phases Vue go through to add elements onto the page - Vue divides the animations into frames. 
 
 Vue takes care of adding the classes, not the animation itself.
-
-
-## Animating with CSS Transitions
 
 ### A set of classes can be added for when adding the element to the document. 
 
@@ -57,10 +56,13 @@ __*-leave-active__ is the class that gets added to the entire animation, includi
 
 Once the animation is finished, the element is removed from the document. 
 
+## Animating with CSS Transitions
+
+### A simple way to create animation with CSS.
+
 ## Fine-tuning Transitions
 
 ### Learn how to configure transitions. There are various things that can be changed to get the desired behavior. 
-
 
 The following code didn't tell Vue how long the animation should play. Vue is capable of looking at the styles applied to the element, where the duration was set. Vue will use the duration that was set in the CSS. 
 
@@ -127,6 +129,31 @@ The __mode__ attribute defines the order of the animation.
 </transition>
 ```
 
+## Animating with CSS Animations
 
+A more advanced way to create animations, gives you more control over your animations. 
 
+The same set of classes can be used. It can also be used along with Transition. However, if the two animation have different duration times, by defualt, __Vue will use the duration with the longest time__. But Vue does allow you to choose which duration to use. 
+
+```
+<!-- the type will either be 'animation' or 'transition' to tell Vue which duration to use -->
+
+<transition name="zoom" type="animation">
+    <h2 v-if="flag">Hello!</h2>
+</transition>
+```
+
+### Playing Animation On Page Load
+
+Does not happen by default. In order to have animation play on page load, a property __appear__ can be added to the __transition__ component. 
+
+```
+<transition name="zoom" type="animation" appear>
+    <h2 v-if="flag">Hello!</h2>
+</transition>
+```
+
+<hr />
+
+## JavaScirpt Animations
 
