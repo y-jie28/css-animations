@@ -23,7 +23,7 @@ Vue takes care of adding the classes, not the animation itself.
 
 ## Animating with CSS Transitions
 
-- A set of classes can be added for when adding the element to the document. 
+### A set of classes can be added for when adding the element to the document. 
 
 #### *-enter-from
 
@@ -47,7 +47,7 @@ __*-enter-active__ is the class that gets added to the __beginning__ of the anim
 
 Once the animation is finished, the element is added to the document. 
 
-- A different set of classes can be added for leaving the document. 
+### A different set of classes can be added for leaving the document. 
 
 __*-leave-from__ is the class that gets added to the __first__ frame of the animation. 
 
