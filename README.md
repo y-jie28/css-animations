@@ -22,37 +22,37 @@ Phases Vue go through to add elements onto the page - Vue divides the animations
 
 Vue takes care of adding the classes, not the animation itself.
 
-### A set of classes can be added for when adding the element to the document. 
+### A set of classes can be added for animation when adding the element to the document. 
 
-#### *-enter-from
+- The __before-enter__ hook is triggered before the animetion starts. 
+    - Prepare and set initial properties. 
+- The __enter__ hook is where the animation performs. 
+    - This is where most of the code will be written
+- The __after-enter__ hook is called when the animation is complete. 
+    - Allows clean-up to be done when necessary. 
 
-__*-enter-from__ is the class that gets added to the __first__ frame of the animation. e.g. if the animation is called __fade__, it will be:  
+- The __before-leave__ hook is triggered before the animation starts. 
+- The __leave__ hook is where the animation performs. 
+- The __after-leave__ hook is called when the animation is complete. 
 
-```
-fade-enter-from
-```
 
-It isn't alive for very long, its purpose is to add some initial properties to the element. 
 
-#### *-enter-to
-
-__*-enter-to__ is the class that gets added to the __final__ frame of the animation. 
-
-This class isn't commonly used, but is useful if you want to add some finishing touches to the element after the animation is finished. 
-
-#### *-enter-active
-
-__*-enter-active__ is the class that gets added to the __beginning__ of the animation to the __end__ of the animation, which includes the __first__ and __final__ frames. 
+### The Entering clases are added when the element is being inserted into the DOM. 
+- The __*-enter-from__ is added to the first frame of the animation. 
+    - Prepare and set initial properties. 
+- The __*-enter-to__ is added to the final frame of the animation. 
+    - Not commonly used, but useful if you want to add some finishing touches to the element after the animation is finished. 
+- The __*-enter-active__ is added from the beginning to the end of the animation. 
 
 Once the animation is finished, the element is added to the document. 
 
-### A different set of classes can be added for leaving the document. 
+### The Leaving clases are added when the element is being inserted into the DOM. 
 
-__*-leave-from__ is the class that gets added to the __first__ frame of the animation. 
+- The __*-leave-from__ is the class that gets added to the __first__ frame of the animation. 
 
-__*-leave-to__ is the class that gets added to the __final__ frame of the animation. 
+- The __*-leave-to__ is the class that gets added to the __final__ frame of the animation. 
 
-__*-leave-active__ is the class that gets added to the entire animation, including the __first__ and __final__ frames.
+- The __*-leave-active__ is the class that gets added to the entire animation, including the __first__ and __final__ frames.
 
 Once the animation is finished, the element is removed from the document. 
 
@@ -161,9 +161,45 @@ CSS is usually the way to go when animating elements. It is the __Simplest__ way
 
 Vue provides 3 hooks to use for both __entering__ and __leaving__ animations. 
 
-### The __Entering__ animations are used when the element is being inserted into the DOM
-
+### The Entering animations are used when the element is being inserted into the DOM. 
+- The __before-enter__ hook is triggered before the animetion starts. 
+    - Prepare and set initial properties. 
+- The __enter__ hook is where the animation performs. 
+    - This is where most of the code will be written
+- The __after-enter__ hook is called when the animation is complete. 
+    - Allows clean-up to be done when necessary. 
 
 ### The __Leaving__ animations are used when the element is being removed from the DOM. 
+- The __before-leave__ hook is triggered before the animation starts. 
+- The __leave__ hook is where the animation performs. 
+- The __after-leave__ hook is called when the animation is complete. 
 
+### JavaScript animations can be added by adding __event listeners__ to the transition component. 
 
+```
+<transition
+@before-enter=""
+@enter=""
+@after-enter=""
+@before-leave=""
+@leave=""
+@after-leave=""
+>
+...
+</transition>
+```
+
+There are two other events that can be listened for, which are the __cancel__ event. These events are cancelled whenever their respective animations are cancelled. 
+
+Not often used, but available. 
+
+```
+@enter-cancelled
+@leave-cancelled
+```
+
+Both __enter__ and __leave__ functions __MUST__ accept the __done__ argument. The __done__ argument are being passed in as a _function_. 
+
+The __done__ function is a callback function that tells Vue when the animation is finished playing. 
+
+After the function is called, Vue will proceed with adding or removing the element. 
