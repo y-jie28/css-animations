@@ -257,3 +257,28 @@ However, this does not solve the problem entirely.
 When an element is added, it first takes up a space, add the element and then plays the animation. When removing an element, the opposite happens, the animation gets played first before the element is removed. The other elements technically doesn't have to move in this case, and the transform property does not change. 
 
 Solution: Use __absolute__ positioning.
+
+<hr />
+
+## Third Party Libraries for CSS Animations
+
+[Animate.css](https://cdnjs.com/libraries/animate.css)
+
+We can always use a third-party library for CSS animation. However, it won't work if the names doesn't match. We can overwrite this behavior. 
+
+The following code sets each class name. It can also be applied to the __transition__ component. 
+
+```
+<transition-group
+enter-from-class=""
+enter-active-class=""
+enter-to-class=""
+leave-from-class=""
+leave-active-class=""
+leave-to-class=""
+>
+...
+</transition-group>
+```
+
+However, if it is left empty, Vue will throw an error. 
