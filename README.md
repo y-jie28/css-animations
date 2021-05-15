@@ -202,6 +202,18 @@ Both __enter__ and __leave__ functions __MUST__ accept the __done__ argument. Th
 
 The __done__ function is a callback function that tells Vue when the animation is finished playing. 
 
+```
+leave(el, done) {
+    console.log('leave event fired', el);
+
+    const animation = el.animate([{}, { transform: "scale3d(0,0,0)" }], {
+     duration: 1000,
+    }); // only exist on DOM object
+      
+    animation.onfinish = () => done();
+}
+```
+
 After the function is called, Vue will proceed with adding or removing the element. 
 
 ### Web Animations API
@@ -213,9 +225,16 @@ The animate() function only exists on DOM objects, and therefore it is not speci
 Vue prefers CSS animations to be used over JavaScript animation, and therefore will check if there is a CSS animation for the transition first. This takes more resources, and to avoid, we should tell Vue we don't have a CSS animation if there doesn't exist one. 
 
 ```
-<transition :css="false>
+<transition :css="false">
 ...
 </transition>
 ```
 
 We can bind a property called __css__ to tell Vue we don't have a CSS animation.
+
+<hr />
+
+## Using CSS and JavaScript Transitions
+
+When both CSS and JavaScript animations are used, Vue will use the duration set for CSS. And therefore, the done() function becomes optional for JavaScript hooks. 
+
