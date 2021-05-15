@@ -232,9 +232,19 @@ Vue prefers CSS animations to be used over JavaScript animation, and therefore w
 
 We can bind a property called __css__ to tell Vue we don't have a CSS animation.
 
-<hr />
-
 ## Using CSS and JavaScript Transitions
 
 When both CSS and JavaScript animations are used, Vue will use the duration set for CSS. And therefore, the done() function becomes optional for JavaScript hooks. 
+
+<hr />
+
+## Animating a List
+
+So far, we been only animating a single element, or a group of elements using the conditional directive. What if we want to animate a list? 
+
+The __transition__ component CANNOT be used to animate a list. It only works on single elements. 
+
+A different component must be used to animate a list of elements. 
+
+__transition-group__ is used to animate group of elements in a loop. It is similar to the __transition__ component, except it cannot set the __mode__ property. It can't be set to out-in or in-out. 
 
